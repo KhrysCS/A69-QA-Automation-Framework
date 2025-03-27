@@ -11,7 +11,7 @@ import java.time.Duration;
 public class LoginTests extends BaseTest {
     @Test
     public void loginEmptyEmailPassword() {
-
+/*
 //      Added ChromeOptions argument below to fix websocket error
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
@@ -20,21 +20,29 @@ public class LoginTests extends BaseTest {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
         String url = "https://qa.koel.app/";
-        driver.get(url);
-
+        driver.get(url);*/
+        navigateToPage();
+        provideEmail(" ");
+        providePassword("   ");
+        clickSubmit();
         Assert.assertEquals(driver.getCurrentUrl(), url);
         driver.quit();
     }
     @Test
     public void loginValidEmailPassword(){
         //Added ChromeOptions argument below to fix websocket error
-        ChromeOptions options = new ChromeOptions();
+       /* ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
 
         WebDriver driver = new ChromeDriver(options);
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));*/
 
-        String url = "https://qa.koel.app/";
+        navigateToPage();
+        provideEmail("khrystal.colon@testpro.io");
+        providePassword("t3$t$tudent");
+        clickSubmit();
+
+          /* String url = "https://qa.koel.app/";
         driver.get(url);
 
        WebElement emailField = driver.findElement(By.cssSelector("input[type='email']"));
@@ -46,7 +54,7 @@ public class LoginTests extends BaseTest {
        passwordField.sendKeys("t3$t$tudent");
 
        WebElement submitBtn = driver.findElement(By.cssSelector("button[type='submit']"));
-       submitBtn.click();
+       submitBtn.click();*/
 
        WebElement avatarIcon = driver.findElement(By.cssSelector("img[class='avatar']"));
 
@@ -58,7 +66,7 @@ public class LoginTests extends BaseTest {
 
     @Test
     public void loginInvalidEmailValidPassword() throws InterruptedException {
-        //Added ChromeOptions argument below to fix websocket error
+       /* //Added ChromeOptions argument below to fix websocket error
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
 
@@ -76,8 +84,11 @@ public class LoginTests extends BaseTest {
         passwordField.sendKeys("t3$t$tudent");
 
         WebElement submitBtn = driver.findElement(By.cssSelector("button[type='submit']"));
-        submitBtn.click();
-
+        submitBtn.click();*/
+        navigateToPage();
+        provideEmail("demo@testpro.io");
+        providePassword("t3$t$tudent");
+        clickSubmit();
         Thread.sleep(2000);
 
         Assert.assertEquals(driver.getCurrentUrl(),url);
@@ -88,8 +99,8 @@ public class LoginTests extends BaseTest {
 
     @Test
     public void loginValidEmailEmptyPassword() throws InterruptedException{
-        //Added ChromeOptions argument below to fix websocket error
-        ChromeOptions options = new ChromeOptions();
+        /*//Added ChromeOptions argument below to fix websocket error
+       / ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
 
         WebDriver driver = new ChromeDriver(options);
@@ -103,7 +114,11 @@ public class LoginTests extends BaseTest {
         emailField.sendKeys("khrystal.colon@testpro.io");
 
         WebElement submitBtn = driver.findElement(By.cssSelector("button[type='submit']"));
-        submitBtn.click();
+        submitBtn.click();*/
+        navigateToPage();
+        provideEmail("khrystal.colon@testpro.io");
+        providePassword(" ");
+        clickSubmit();
 
         Thread.sleep(2000);
 
