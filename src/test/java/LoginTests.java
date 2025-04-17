@@ -9,8 +9,8 @@ import org.testng.annotations.Test;
 import java.time.Duration;
 
 public class LoginTests extends BaseTest {
-    @Test
-    public void loginEmptyEmailPassword() {
+    @Test(dataProvider = "IncorrectLoginData", dataProviderClass = BaseTest.class)
+    public void loginEmptyEmailPassword(String email, String password) throws InterruptedException {
 /*
 //      Added ChromeOptions argument below to fix websocket error
         ChromeOptions options = new ChromeOptions();
@@ -21,12 +21,13 @@ public class LoginTests extends BaseTest {
 
         String url = "https://qa.koel.app/";
         driver.get(url);*/
-        navigateToPage();
-        provideEmail(" ");
-        providePassword("   ");
+        //navigateToPage();
+        provideEmail(email);
+        providePassword(password);
         clickSubmit();
+        Thread.sleep(2000);
         Assert.assertEquals(driver.getCurrentUrl(), url);
-        driver.quit();
+       // driver.quit();
     }
     @Test
     public void loginValidEmailPassword(){
@@ -37,7 +38,7 @@ public class LoginTests extends BaseTest {
         WebDriver driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));*/
 
-        navigateToPage();
+        //navigateToPage();
         provideEmail("khrystal.colon@testpro.io");
         providePassword("t3$t$tudent");
         clickSubmit();
@@ -85,7 +86,7 @@ public class LoginTests extends BaseTest {
 
         WebElement submitBtn = driver.findElement(By.cssSelector("button[type='submit']"));
         submitBtn.click();*/
-        navigateToPage();
+     //   navigateToPage();
         provideEmail("demo@testpro.io");
         providePassword("t3$t$tudent");
         clickSubmit();
@@ -115,7 +116,7 @@ public class LoginTests extends BaseTest {
 
         WebElement submitBtn = driver.findElement(By.cssSelector("button[type='submit']"));
         submitBtn.click();*/
-        navigateToPage();
+     //   navigateToPage();
         provideEmail("khrystal.colon@testpro.io");
         providePassword(" ");
         clickSubmit();
