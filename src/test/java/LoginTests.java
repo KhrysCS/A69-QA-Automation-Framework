@@ -3,6 +3,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -25,7 +26,7 @@ public class LoginTests extends BaseTest {
         provideEmail(email);
         providePassword(password);
         clickSubmit();
-        Thread.sleep(2000);
+        //Thread.sleep(2000);
         Assert.assertEquals(driver.getCurrentUrl(), url);
        // driver.quit();
     }
@@ -57,12 +58,12 @@ public class LoginTests extends BaseTest {
        WebElement submitBtn = driver.findElement(By.cssSelector("button[type='submit']"));
        submitBtn.click();*/
 
-       WebElement avatarIcon = driver.findElement(By.cssSelector("img[class='avatar']"));
+       WebElement avatarIcon = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("img[class='avatar']")));//driver.findElement(By.cssSelector("img[class='avatar']"));
 
        //Expeceted Result
         Assert.assertTrue(avatarIcon.isDisplayed());
 
-        driver.quit();
+       // driver.quit();
     }
 
     @Test
@@ -90,11 +91,11 @@ public class LoginTests extends BaseTest {
         provideEmail("demo@testpro.io");
         providePassword("t3$t$tudent");
         clickSubmit();
-        Thread.sleep(2000);
+    //    Thread.sleep(2000);
 
         Assert.assertEquals(driver.getCurrentUrl(),url);
 
-        driver.quit();
+    //    driver.quit();
 
     }
 
@@ -121,31 +122,25 @@ public class LoginTests extends BaseTest {
         providePassword(" ");
         clickSubmit();
 
-        Thread.sleep(2000);
+    //    Thread.sleep(2000);
 
         Assert.assertEquals(driver.getCurrentUrl(),url);
 
-        driver.quit();
+     //   driver.quit();
     }
     @Test
     public void registrationNavigation(){
+        provideEmail("khrystal.colon@testpro.io");
+        providePassword("t3$t$tudent");
+        clickSubmit();
 
-//      Added ChromeOptions argument below to fix websocket error
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--remote-allow-origins=*");
-
-        WebDriver driver = new ChromeDriver(options);
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-
-        String url = "https://qa.koel.app/";
-        driver.get(url);
-
-        WebElement registrationLink = driver.findElement(By.cssSelector("a[href='registration']"));
+        //WebElement registrationLink = driver.findElement(By.cssSelector("a[href='registration']"));
+        WebElement registrationLink = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("a[href='registration']")));
         registrationLink.click();
 
         Assert.assertNotEquals(driver.getCurrentUrl(), url);
 
-        driver.quit();
+     //   driver.quit();
     }
 
 }
