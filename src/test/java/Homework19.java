@@ -9,6 +9,8 @@ import org.testng.annotations.Test;
 import java.time.Duration;
 
 public class Homework19 extends BaseTest{
+    //Prerequisites - user created playlist named "Test Pro Playlist"
+
     @Test
     public void deletePlaylist() throws InterruptedException{
         String expectedPlaylistDeletedMsg = "Deleted playlist \"Test Pro Playlist.\"";
