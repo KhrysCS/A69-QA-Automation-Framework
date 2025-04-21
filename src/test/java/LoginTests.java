@@ -6,6 +6,8 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.HomePage;
+import pages.LoginPage;
 
 import java.time.Duration;
 
@@ -40,9 +42,19 @@ public class LoginTests extends BaseTest {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));*/
 
         //navigateToPage();
-        provideEmail("khrystal.colon@testpro.io");
-        providePassword("t3$t$tudent");
-        clickSubmit();
+//        provideEmail("khrystal.colon@testpro.io");
+//        providePassword("t3$t$tudent");
+//        clickSubmit();
+
+        LoginPage loginPage = new LoginPage(driver);
+        HomePage homePage    = new HomePage(driver);
+
+        loginPage.provideEmail("khrystal.colon@testpro.io");
+        loginPage.providePassword("t3$t$tudent");
+        loginPage.clickSubmit();
+
+        Assert.assertTrue(homePage.getUserAvatar().isDisplayed());
+
 
           /* String url = "https://qa.koel.app/";
         driver.get(url);
@@ -58,10 +70,10 @@ public class LoginTests extends BaseTest {
        WebElement submitBtn = driver.findElement(By.cssSelector("button[type='submit']"));
        submitBtn.click();*/
 
-       WebElement avatarIcon = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("img[class='avatar']")));//driver.findElement(By.cssSelector("img[class='avatar']"));
+      // WebElement avatarIcon = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("img[class='avatar']")));//driver.findElement(By.cssSelector("img[class='avatar']"));
 
        //Expeceted Result
-        Assert.assertTrue(avatarIcon.isDisplayed());
+      //  Assert.assertTrue(avatarIcon.isDisplayed());
 
        // driver.quit();
     }

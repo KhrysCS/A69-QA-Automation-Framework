@@ -14,12 +14,17 @@ import java.time.Duration;
 
 public class BaseTest {
 
-    public WebDriver driver = null;
-    public String url;// =  "https://qa.koel.app/";
+    //public WebDriver driver = null;
+    public static WebDriver driver = null;
 
-    public WebDriverWait wait = null;
+   // public String url;// =  "https://qa.koel.app/";
+    public static String url;
 
-    public Actions actions = null;
+    //public WebDriverWait wait = null;
+    public static WebDriverWait wait = null;
+
+   // public Actions actions = null;
+   public static Actions actions = null;
 
     @BeforeSuite
     static void setupClass() {
