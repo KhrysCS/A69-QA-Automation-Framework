@@ -7,7 +7,7 @@ public class LoginPage extends BasePage {
     public LoginPage(WebDriver givenDriver) {
         super(givenDriver);
     }
-    By emailField = By.cssSelector("input['email']");
+    By emailField = By.cssSelector("input[type='email']");
     By passwordField = By.cssSelector("input[type='password']");
     By submitBtn = By.cssSelector("button[type='submit']");
 
@@ -24,5 +24,9 @@ public class LoginPage extends BasePage {
         provideEmail("khrystal.colon@testpro.io");
         providePassword("t3$t$tudent");
         clickSubmit();
+    }
+
+    public String getCurrentUrl(){
+        return driver.getCurrentUrl();
     }
 }

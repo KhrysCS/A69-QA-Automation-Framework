@@ -130,21 +130,22 @@ public class LoginTests extends BaseTest {
         WebElement submitBtn = driver.findElement(By.cssSelector("button[type='submit']"));
         submitBtn.click();*/
      //   navigateToPage();
-        provideEmail("khrystal.colon@testpro.io");
-        providePassword(" ");
-        clickSubmit();
+//        provideEmail("khrystal.colon@testpro.io");
+//        providePassword(" ");
+//        clickSubmit();
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.provideEmail("khrystal.colon@testpro.io");
+        loginPage.clickSubmit();
+        Assert.assertEquals(loginPage.getCurrentUrl(),url);
 
     //    Thread.sleep(2000);
 
-        Assert.assertEquals(driver.getCurrentUrl(),url);
+        //Assert.assertEquals(driver.getCurrentUrl(),url);
 
      //   driver.quit();
     }
     @Test
     public void registrationNavigation(){
-        provideEmail("khrystal.colon@testpro.io");
-        providePassword("t3$t$tudent");
-        clickSubmit();
 
         //WebElement registrationLink = driver.findElement(By.cssSelector("a[href='registration']"));
         WebElement registrationLink = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("a[href='registration']")));
