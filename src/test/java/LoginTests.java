@@ -101,13 +101,18 @@ public class LoginTests extends BaseTest {
         WebElement submitBtn = driver.findElement(By.cssSelector("button[type='submit']"));
         submitBtn.click();*/
      //   navigateToPage();
-        provideEmail("demo@testpro.io");
-        providePassword("t3$t$tudent");
-        clickSubmit();
+//        provideEmail("demo@testpro.io");
+//        providePassword("t3$t$tudent");
+//        clickSubmit();
+
+        LoginPage loginPage = new LoginPage(driver);
+        HomePage homePage = new HomePage(driver);
+        loginPage.provideEmail("demo@testpro.io").providePassword("t3$t$tudent").clickSubmit();
+
     //    Thread.sleep(2000);
 
-        Assert.assertEquals(driver.getCurrentUrl(),url);
-
+        //Assert.assertEquals(driver.getCurrentUrl(),url);
+        Assert.assertEquals(loginPage.getCurrentUrl(),url);
     //    driver.quit();
 
     }
