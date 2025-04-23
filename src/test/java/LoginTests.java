@@ -29,8 +29,10 @@ public class LoginTests extends BaseTest {
         providePassword(password);
         clickSubmit();
         //Thread.sleep(2000);
-        Assert.assertEquals(driver.getCurrentUrl(), url);
-       // driver.quit();
+        //Assert.assertEquals(driver.getCurrentUrl(), url);
+        Assert.assertEquals(getDriver().getCurrentUrl(), url);
+
+        // driver.quit();
     }
     @Test
     public void loginValidEmailPassword(){
@@ -46,8 +48,10 @@ public class LoginTests extends BaseTest {
 //        providePassword("t3$t$tudent");
 //        clickSubmit();
 
-        LoginPage loginPage = new LoginPage(driver);
-        HomePage homePage    = new HomePage(driver);
+//        LoginPage loginPage = new LoginPage(driver);
+//        HomePage homePage    = new HomePage(driver);
+        LoginPage loginPage = new LoginPage(getDriver());
+        HomePage homePage    = new HomePage(getDriver());
 
 //        loginPage.provideEmail("khrystal.colon@testpro.io");
 //        loginPage.providePassword("t3$t$tudent");
@@ -105,8 +109,10 @@ public class LoginTests extends BaseTest {
 //        providePassword("t3$t$tudent");
 //        clickSubmit();
 
-        LoginPage loginPage = new LoginPage(driver);
-        HomePage homePage = new HomePage(driver);
+//        LoginPage loginPage = new LoginPage(driver);
+//        HomePage homePage = new HomePage(driver);
+        LoginPage loginPage = new LoginPage(getDriver());
+        HomePage homePage = new HomePage(getDriver());
         loginPage.provideEmail("demo@testpro.io").providePassword("t3$t$tudent").clickSubmit();
 
     //    Thread.sleep(2000);
@@ -139,7 +145,8 @@ public class LoginTests extends BaseTest {
 //        provideEmail("khrystal.colon@testpro.io");
 //        providePassword(" ");
 //        clickSubmit();
-        LoginPage loginPage = new LoginPage(driver);
+       // LoginPage loginPage = new LoginPage(driver);
+        LoginPage loginPage = new LoginPage(getDriver());
         loginPage.provideEmail("khrystal.colon@testpro.io");
         loginPage.clickSubmit();
         Assert.assertEquals(loginPage.getCurrentUrl(),url);
@@ -157,9 +164,11 @@ public class LoginTests extends BaseTest {
         WebElement registrationLink = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("a[href='registration']")));
         registrationLink.click();
 
-        Assert.assertNotEquals(driver.getCurrentUrl(), url);
+//        Assert.assertNotEquals(driver.getCurrentUrl(), url);
+        Assert.assertNotEquals(getDriver().getCurrentUrl(), url);
 
-     //   driver.quit();
+
+        //   driver.quit();
     }
 
 }
